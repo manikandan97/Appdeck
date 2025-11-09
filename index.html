@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manikandan | My Apps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .app-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .app-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .visit-btn {
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .visit-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-purple-50 min-h-screen">
+    <!-- Header -->
+    <header class="text-center py-16 px-4">
+        <h1 class="text-5xl font-bold text-gray-800 mb-3">Manikandan</h1>
+        <p class="text-xl text-gray-600 font-light">My Apps Portfolio</p>
+        <div class="mt-4 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pb-16">
+        <div id="apps-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            <!-- App cards will be inserted here by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-8 px-4 bg-white/50 backdrop-blur-sm">
+        <p class="text-gray-600">
+            &copy; 2025 Manikandan |
+            <span class="font-medium text-gray-800">Building useful tools</span>
+        </p>
+    </footer>
+
+    <script>
+        // Apps data
+        const apps = [
+            {
+                name: "RSMK Dev",
+                description: "My personal developer website",
+                url: "https://www.rsmk.dev",
+                color: "from-blue-500 to-blue-600"
+            },
+            {
+                name: "Ledger",
+                description: "Personal finance tracker",
+                url: "https://ledger.rsmk.dev",
+                color: "from-green-500 to-green-600"
+            },
+            {
+                name: "Contact",
+                description: "Digital business card/contact manager",
+                url: "https://contact.rsmk.dev",
+                color: "from-purple-500 to-purple-600"
+            },
+            {
+                name: "Share",
+                description: "File sharing tool",
+                url: "https://share.rsmk.dev",
+                color: "from-orange-500 to-orange-600"
+            },
+            {
+                name: "Link Shortener",
+                description: "Simple URL shortener",
+                url: "https://link.rsmk.dev",
+                color: "from-pink-500 to-pink-600"
+            },
+            {
+                name: "Sticker Maker",
+                description: "Create WhatsApp stickers easily",
+                url: "https://sticker-maker.rsmk.dev",
+                color: "from-teal-500 to-teal-600"
+            },
+            {
+                name: "My Tools",
+                description: "Collection of personal utilities",
+                url: "https://my-tools-coral.vercel.app/login",
+                color: "from-indigo-500 to-indigo-600"
+            },
+            {
+                name: "InstaCaptioner",
+                description: "AI-powered Instagram caption generator",
+                url: "https://www.instacaptioner.in",
+                color: "from-rose-500 to-rose-600"
+            }
+        ];
+
+        // Render app cards
+        function renderApps() {
+            const grid = document.getElementById('apps-grid');
+
+            apps.forEach(app => {
+                const card = document.createElement('div');
+                card.className = 'app-card bg-white rounded-2xl shadow-lg p-6 flex flex-col justify-between';
+
+                card.innerHTML = `
+                    <div>
+                        <div class="w-12 h-12 bg-gradient-to-br ${app.color} rounded-xl mb-4 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">${app.name}</h3>
+                        <p class="text-gray-600 text-sm mb-4">${app.description}</p>
+                    </div>
+                    <a href="${app.url}"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="visit-btn bg-gradient-to-r ${app.color} text-white font-medium py-2.5 px-4 rounded-lg text-center inline-block">
+                        Visit App →
+                    </a>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        // Initialize
+        renderApps();
+    </script>
+</body>
+</html>
